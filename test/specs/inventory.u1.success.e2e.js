@@ -24,6 +24,4 @@ describe("Login page", () => {
   });
 });
 
-
-
-select sort items by price (low to high), items get sorrted correctly
+// select sort items by price (low to high), items get sorrted correctly
