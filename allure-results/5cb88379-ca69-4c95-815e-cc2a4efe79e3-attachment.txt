@@ -1,0 +1,4 @@
+{
+  "using": "css selector",
+  "value": "img[class='inventory_item_img']"
+}

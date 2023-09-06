@@ -1,0 +1,4 @@
+{
+  "using": "css selector",
+  "value": "select[data-test='product_sort_container']"
+}

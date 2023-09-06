@@ -4,14 +4,24 @@ const Page = require("./page");
 /**
  * sub page containing specific selectors and methods for a specific page
  */
-class MainPage extends Page {
+class InventoryPage extends Page {
   /**
    * define selectors using getter methods
    */
+  get filter() {
+    return $("select[data-test='product_sort_container']");
+  }
+
+  get lowhigh() {
+    return $("option[value='lohi']");
+  }
 
   /**
    * a method to encapsule automation code to interact with the page
-
+   */
+  async selectFilter() {
+    await this.filter.click();
+    await this.lowhigh.click();
   }
 
   /**
@@ -22,4 +32,4 @@ class MainPage extends Page {
   }
 }
 
-module.exports = new MainPage();
+module.exports = new InventoryPage();

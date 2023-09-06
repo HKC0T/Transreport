@@ -2,7 +2,7 @@ const { expect } = require("@wdio/globals");
 const LoginPage = require("../pageobjects/login.page");
 
 describe("Login page", () => {
-  it("should login with accepted username 'problem_user' and redirect to inventory page", async () => {
+  it("should login with accepted username 'problem_user' and redirect to inventory page with problematic item images", async () => {
     await LoginPage.open();
 
     await LoginPage.login("problem_user", "secret_sauce");
