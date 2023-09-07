@@ -41,6 +41,23 @@ class InventoryPage extends Page {
     return newNumber;
   }
 
+  async randomItems(amount) {
+    const choices = new Set();
+    while (choices.size != amount) {
+      const newNumber = await this.randomNumber();
+      choices.add(newNumber);
+      // console.log(`size${choices.size}`);
+      // console.log(`nnnnnnnnnnnn${newNumber}`);
+    }
+    return choices;
+  }
+
+  async selectItems(choices, itemAddButtons) {
+    for (const choice of choices) {
+      (await itemAddButtons[choice]).click();
+    }
+  }
+
   /**
    * overwrite specific options to adapt it to page object
    */
