@@ -17,6 +17,12 @@ class SecurePage extends Page {
   get EmptyField() {
     return $('div[class="error-message-container error"]');
   }
+  get AccessInventoryWithoutLogin() {
+    return $('h3[data-test="error"]');
+  }
+  get AccessCartWithoutLogin() {
+    return $('h3[data-test="error"]');
+  }
 }
 
 module.exports = new SecurePage();
