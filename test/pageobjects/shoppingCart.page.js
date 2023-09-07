@@ -37,6 +37,15 @@ class ShoppingCartPage extends Page {
     return choices;
   }
 
+  async removedItemIds(choices, itemRemoveButtons) {
+    const removedIds = new Set();
+    for (const choice of choices) {
+      const removedId = await itemRemoveButtons[choice].getProperty("id");
+      removedIds.add(removedId);
+    }
+    return removedIds;
+  }
+
   async removeItems(choices, itemRemoveButtons) {
     for (const choice of choices) {
       (await itemRemoveButtons[choice]).click();

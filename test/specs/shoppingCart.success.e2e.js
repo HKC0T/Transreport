@@ -38,8 +38,18 @@ describe("Login then add 3 random items to the cart and remove 1 item", () => {
 
     const itemRemoveButtons = await ShoppingCartPage.removeButtons;
     const choices = await ShoppingCartPage.randomItems(removedItems);
+    const removedIds = await ShoppingCartPage.removedItemIds(
+      choices,
+      itemRemoveButtons
+    );
+    // console.log(`${itemRemoveButtons[]}`)
 
     await ShoppingCartPage.removeItems(choices, itemRemoveButtons);
+    for await (const removedId of removedIds) {
+      for await (const button of itemRemoveButtons) {
+        await expect(button).not.toHaveAttr("id", removedId);
+      }
+    }
     await expect(ShoppingCartPage.numberOfItems).toBeElementsArrayOfSize(
       selectedItems - removedItems
     );
