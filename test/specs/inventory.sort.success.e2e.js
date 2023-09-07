@@ -19,10 +19,15 @@ describe("Login and sort items", () => {
     //select low to high
     await InventoryPage.sortLoHi();
 
+    const sortedPriceList = await InventoryPage.loHiPriceList();
+
+    const min = sortedPriceList[0].toString();
+    const max = sortedPriceList[sortedPriceList.length - 1].toString();
+
     //test if items are sorted correctly
-    await expect(InventoryPage.itemPrices[0]).toHaveText("$7.99");
+    await expect(InventoryPage.itemPrices[0]).toHaveTextContaining(min);
     await expect(
       InventoryPage.itemPrices[(await InventoryPage.numberOfItems) - 1]
-    ).toHaveText("$49.99");
+    ).toHaveTextContaining(max);
   });
 });

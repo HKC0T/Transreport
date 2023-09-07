@@ -58,6 +58,17 @@ class InventoryPage extends Page {
     }
   }
 
+  async loHiPriceList() {
+    const priceList = new Array();
+    for await (const itemPrice of this.itemPrices) {
+      const text = itemPrice.getText();
+      const price = parseFloat((await text).replace("$", ""));
+      priceList.push(price);
+    }
+    // console.log(`llllll${priceList.sort((a, b) => a - b)}`);
+    return priceList.sort((a, b) => a - b);
+  }
+
   /**
    * overwrite specific options to adapt it to page object
    */
