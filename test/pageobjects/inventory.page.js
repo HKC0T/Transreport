@@ -8,7 +8,7 @@ class InventoryPage extends Page {
   /**
    * define selectors using getter methods
    */
-  get filter() {
+  get selectSort() {
     return $("select[data-test='product_sort_container']");
   }
 
@@ -16,12 +16,29 @@ class InventoryPage extends Page {
     return $("option[value='lohi']");
   }
 
+  get addToCart() {
+    return $$("button=Add to cart");
+  }
+
+  get numberOfItems() {
+    return $$(".inventory_item").length;
+  }
+
+  get itemPrices() {
+    return $$("div[class='inventory_item_price']");
+  }
+
   /**
    * a method to encapsule automation code to interact with the page
    */
-  async selectFilter() {
-    await this.filter.click();
+  async sortLoHi() {
+    await this.selectSort.click();
     await this.lowhigh.click();
+  }
+
+  async randomNumber() {
+    const newNumber = Math.floor(Math.random() * (await this.numberOfItems));
+    return newNumber;
   }
 
   /**

@@ -2,6 +2,8 @@ const { expect } = require("@wdio/globals");
 const LoginPage = require("../pageobjects/login.page");
 const SecurePage = require("../pageobjects/secure.page");
 
+//test scenarios when user fails to login
+
 describe("Login page", () => {
   it("should deny login with unaccepted usernames", async () => {
     await LoginPage.open();
